@@ -12,7 +12,6 @@ g1 = (I3 - I2)/I1;
 g2 = (I1 - I3)/I2;
 g3 = (I2 - I1)/I3;
 
-
 % calculate number of steps to run
 nmax = t_max / dt;
 
