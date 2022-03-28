@@ -18,7 +18,7 @@ h = 4;
 w_init = [3,1,2];
 
 t_max = 20;
-dt = 0.001;
+dt = 0.01;
 
 % solve for angular velocity
 [x y z t] = SolveRK4(M, r, h, w_init, t_max, dt);
