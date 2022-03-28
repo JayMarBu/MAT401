@@ -1,6 +1,6 @@
-% MAT400 Assignment
+% MAT401 Assignment
 
-disp('Mat400 Assignment');
+disp('Mat401 Assignment');
 
 % Task 1:
 % Solve Eulers equations using fourth order runge-kutta on a cone with the
@@ -8,7 +8,7 @@ disp('Mat400 Assignment');
 % - M = 10kg
 % - r = 1m
 % - h = 4m
-% - ? = (3,1,2) rads^-1
+% - w = (3,1,2) rads^-1
 % - t 0 -> 20 s
 
 % set values
@@ -18,7 +18,7 @@ h = 4;
 w_init = [3,1,2];
 
 t_max = 20;
-dt = 0.1;
+dt = 0.001;
 
 % solve for angular velocity
 [x y z t] = SolveRK4(M, r, h, w_init, t_max, dt);
@@ -75,3 +75,32 @@ xlabel('time (s)')
 ylabel('velocity (ms-1)')
 legend('x','y','z')
 print -dpdf -r500 -painters task_3_and_4_velocity.pdf
+
+% Task 5:
+% plot the complete motion in the x-y plane of a point p on the cone
+% - p = (0, 3r/4, 0)
+
+p = [0, (3/4)*r, 0];
+
+[x3, y3, z3] = ComputeTrajectoryOfPoint(p, x,y,z, x2,y2,z2, t_max, dt);
+
+% displacment time graph
+plot(t2, x3, 'r');
+hold on
+plot(t2, y3, 'b');
+grid on
+hold off
+title('Task 5')
+xlabel('time (s)')
+ylabel('displacement (m)')
+legend('x','y')
+print -dpdf -r500 -painters task_5_displacment_over_time.pdf
+
+% x y graph
+plot(x3, y3, 'r');
+grid on
+hold off
+title('Task 5')
+xlabel('x (m)')
+ylabel('y (m)')
+print -dpdf -r500 -painters task_5_x_by_y.pdf

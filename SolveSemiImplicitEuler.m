@@ -1,6 +1,8 @@
 function [x y z vx vy vz t] = SolveSemiImplicitEuler( u, a, t_max, dt )
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
+% - u = initial velocity
+% - a = acceleration
+% - t_max = max time step
+% - dt = time in seconds of one step
 
     nmax=t_max/dt;
     
@@ -27,10 +29,12 @@ function [x y z vx vy vz t] = SolveSemiImplicitEuler( u, a, t_max, dt )
     vz(1) = u(3);
 
     for n = 1:nmax-1;
+        % calculate velocity
         vx(n+1) = vx(n) - dt*a(1);
         vy(n+1) = vy(n) - dt*a(2);
         vz(n+1) = vz(n) - dt*a(3);
         
+        % calculte displacement
         x(n+1) = x(n) + dt*vx(n+1);
         y(n+1) = y(n) + dt*vy(n+1);
         z(n+1) = z(n) + dt*vz(n+1);

@@ -1,6 +1,10 @@
 function [x y z, t] = SolveRK4( M, r, h, w, t_max, dt)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+% - M = mass
+% - r = radius
+% - h = height
+% - w = initial angular velocity
+% - t_max = max time step
+% - dt = time in seconds of one step
 
     % Define Principle moments of Inertia (diagonal values of inertia tensor)
     I1 = (3/20)*M*(r.^2 + (1/4)*h.^2);
