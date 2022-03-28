@@ -23,7 +23,8 @@ dt = 0.1;
 % solve for angular velocity
 [x y z t] = SolveRK4(M, r, h, w_init, t_max, dt);
 
-% plot results
+% Task 2 :
+% plot results of Task 1
 plot(t, x, 'r');
 hold on
 plot(t, y, 'b');
@@ -35,10 +36,42 @@ xlabel('time (s)')
 ylabel('angular velocity (rads-1)')
 legend('x','y','z')
 
-% Task 2:
+print -dpdf -r500 -painters task_1_and_2.pdf
+
+% Task 3:
 % Solve the Semi-Implcit Euler equations of the cone  to obtrain its 
 % trajctory over the same time period using the following properties:
 % - u = (0,0,200)ms-1
 % - a = (0,0,-9.8)ms-2
 % - t 0 -> 20 s
 
+[x2 y2 z2 vx2 vy2 vz2 t2] = SolveSemiImplicitEuler([0,0,200],[0,0,9.8],t_max,dt);
+
+% Task 4:
+% plot results of Task 3
+
+% displacment graph
+plot(t2, x2, 'r');
+hold on
+plot(t2, y2, 'b');
+hold on
+plot(t2, z2, 'g');
+hold off
+title('Task 3 & 4 (Displacement graph)')
+xlabel('time (s)')
+ylabel('displacement (m)')
+legend('x','y','z')
+print -dpdf -r500 -painters task_3_and_4_displacement.pdf
+
+% Velocity graph
+plot(t2, vx2, 'r');
+hold on
+plot(t2, vy2, 'b');
+hold on
+plot(t2, vz2, 'g');
+hold off
+title('Task 3 & 4 (Velocity graph)')
+xlabel('time (s)')
+ylabel('velocity (ms-1)')
+legend('x','y','z')
+print -dpdf -r500 -painters task_3_and_4_velocity.pdf
